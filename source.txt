@@ -8,6 +8,9 @@ bun --version
 
 // Backend
 bun init -y
+bun add express@5.2.1 cors@2.8.5 mongoose@9.0.2 socket.io@4.8.2 @clerk/express@1.7.60
+
+bun add --save-dev @types/express
 
 // Web 
 bun create vite .
