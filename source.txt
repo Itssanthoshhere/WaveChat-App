@@ -1,0 +1,16 @@
+// Installing Bun package
+curl -fsSL https://bun.sh/install | bash
+
+exec /bin/zsh 
+bun --help 
+
+bun --version
+
+// Backend
+bun init -y
+
+// Web 
+bun create vite .
+
+// Mobile
+npx create-expo-app@latest .
