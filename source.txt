@@ -15,5 +15,7 @@ bun add --save-dev @types/express
 // Web 
 bun create vite .
 
+bun add @clerk/clerk-react
+
 // Mobile
 npx create-expo-app@latest .
