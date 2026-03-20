@@ -17,5 +17,8 @@ bun create vite .
 
 bun add @clerk/clerk-react
 
+bun run dev -> run
+bun run build -> to build static backend and frontend as app just one server
+
 // Mobile
 npx create-expo-app@latest .
