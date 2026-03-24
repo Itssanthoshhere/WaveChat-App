@@ -30,3 +30,4 @@ bun add @tanstack/react-query
 
 
 bunx expo start -> run
+npx expo start --dev-client
