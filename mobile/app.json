@@ -41,7 +41,15 @@
         }
       ],
       "expo-secure-store",
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "wavechat-app",
+          "organization": "bennett-university-uh"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
