@@ -34,5 +34,17 @@ bunx @sentry/wizard@latest -i reactNative --saas --org bennett-university-uh --p
 
 bun add date-fns
 
+bunx expo install expo-linear-gradient
+bun add expo-blur
+
 bunx expo start -> run
+
+cd mobile
+rm -rf ios/build ios/Pods ios/Podfile.lock
+cd ios
+pod install
+cd ..
+npx expo start -c
+npx expo run:ios
+
 npx expo start --dev-client
