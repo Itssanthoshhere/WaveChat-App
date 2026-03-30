@@ -1,23 +1,110 @@
-import { ScrollView, Text } from "react-native"; 
 // import * as Sentry from "@sentry/react-native";
 
+import ChatItem from "@/components/ChatItem";
+import EmptyUI from "@/components/EmptyUI";
+import { useChats } from "@/hooks/useChats";
+import { Chat } from "@/types";
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import {
+  ActivityIndicator,
+  FlatList,
+  Pressable,
+  Text,
+  View,
+} from "react-native";
+
 const ChatsTab = () => {
+  const router = useRouter();
+  const { data: chats, isLoading, error } = useChats();
+
+  if (isLoading) {
+    return (
+      <View className="items-center justify-center flex-1 bg-surface">
+        <ActivityIndicator size={"large"} color={"#f4A261"} />
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View className="items-center justify-center flex-1 bg-surface">
+        <Text className="text-red-500">Failed to load chats</Text>
+      </View>
+    );
+  }
+
+  // TODO: test this out later
+  const handleChatPress = (chat: Chat) => {
+    router.push({
+      pathname: "/chat/[id]",
+      params: {
+        id: chat._id,
+        participantId: chat.participant._id,
+        name: chat.participant.name,
+        avatar: chat.participant.avatar,
+      },
+    });
+  };
+
   return (
-    <ScrollView
-      className="bg-surface"
-      contentInsetAdjustmentBehavior="automatic"
-    >
-      <Text className="text-white">Chats Tab</Text>
-      {/* // Uncomment the code below to test Sentry error tracking in the ChatsTab
-      component */}
-      {/* <Button
-        title="Try!"
-        onPress={() => {
-          Sentry.captureException(new Error("First error"));
+    //   Uncomment the code below to test Sentry error tracking in the ChatsTab component
+    //   <Text className="text-white">Chats Tab</Text>
+    //   {/* <Button
+    //     title="Try!"
+    //     onPress={() => {
+    //       Sentry.captureException(new Error("First error"));
+    //     }}
+    //   /> */}
+
+    <View className="flex-1 bg-surface">
+      <FlatList
+        data={chats}
+        keyExtractor={(item) => item._id}
+        renderItem={({ item }) => (
+          <ChatItem chat={item} onPress={() => handleChatPress(item)} />
+        )}
+        showsVerticalScrollIndicator={false}
+        contentInsetAdjustmentBehavior="automatic"
+        contentContainerStyle={{
+          paddingHorizontal: 20,
+          paddingTop: 16,
+          paddingBottom: 24,
         }}
-      /> */}
-    </ScrollView>
+        ListHeaderComponent={<Header />}
+        ListEmptyComponent={
+          <EmptyUI
+            title="No chats yet"
+            subtitle="Start a conversation!"
+            iconName="chatbubbles-outline"
+            iconColor="#6B6B70"
+            iconSize={64}
+            buttonLabel="New Chat"
+            // TODO: fix this later
+            onPressButton={() => console.log("pressed")}
+          />
+        }
+      />
+    </View>
   );
 };
 
 export default ChatsTab;
+
+function Header() {
+  const router = useRouter();
+
+  return (
+    <View className="px-5 pt-2 pb-4">
+      <View className="flex-row items-center justify-between">
+        <Text className="text-2xl font-bold text-foreground">Chats</Text>
+        <Pressable
+          className="items-center justify-center rounded-full size-10 bg-primary"
+          // onPress={() => router.push("/new-chat")}
+        >
+          <Ionicons name="create-outline" size={20} color="#0D0D0F" />
+        </Pressable>
+      </View>
+    </View>
+  );
+}
