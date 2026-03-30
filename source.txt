@@ -39,11 +39,12 @@ bun add expo-blur
 
 bunx expo start -> run
 
-cd ~/Developer/Projects/wavechat-app/mobile
+cd mobile
 rm -rf ios/build ios/Pods ios/Podfile.lock
 cd ios
 pod install
-cd .. npx expo start -c 
+cd ..
+npx expo start -c
 npx expo run:ios
 
 npx expo start --dev-client
