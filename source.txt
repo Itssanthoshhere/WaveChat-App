@@ -32,6 +32,7 @@ bun add axios
 
 bunx @sentry/wizard@latest -i reactNative --saas --org bennett-university-uh --project wavechat-app
 
+bun add date-fns
 
 bunx expo start -> run
 npx expo start --dev-client
