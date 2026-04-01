@@ -86,8 +86,8 @@ const ChatsTab = () => {
             iconColor="#6B6B70"
             iconSize={64}
             buttonLabel="New Chat"
-            // TODO: fix this later
-            onPressButton={() => console.log("pressed")}
+            // INFO: TODO completed the new chat screen routing
+            onPressButton={() => router.push("/new-chat")}
           />
         }
       />
@@ -106,7 +106,7 @@ function Header() {
         <Text className="text-2xl font-bold text-foreground">Chats</Text>
         <Pressable
           className="items-center justify-center rounded-full size-10 bg-primary"
-          // onPress={() => router.push("/new-chat")}
+          onPress={() => router.push("/new-chat")}
         >
           <Ionicons name="create-outline" size={20} color="#0D0D0F" />
         </Pressable>
