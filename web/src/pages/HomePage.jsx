@@ -12,7 +12,7 @@ function HomePage() {
             <div className="flex items-center justify-center shadow-lg size-9 rounded-xl bg-linear-to-br from bg-amber-400 to-orange-500 shadow-gray-500/20 ">
               <SparklesIcon className="size-5 text-primary-content" />
             </div>
-            <span className="text-xl font-bold">Whisper</span>
+            <span className="text-xl font-bold">WaveChat</span>
           </div>
 
           <div className="flex items-center gap-2">
