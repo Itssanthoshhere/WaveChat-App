@@ -41,6 +41,10 @@ bun add expo-blur
 
 bunx expo start -> run
 
+bun add socket.io-client
+
+bun add zustand
+
 cd mobile
 rm -rf ios/build ios/Pods ios/Podfile.lock
 cd ios
@@ -50,3 +54,5 @@ npx expo start -c
 npx expo run:ios
 
 npx expo start --dev-client
+
+npx expo start -c
