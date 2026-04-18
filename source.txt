@@ -31,6 +31,10 @@ bun add lucide-react
 
 bun add axios
 
+bun add zustand
+
+bun add socket.io-client
+
 bun run dev -> run
 bun run build -> to build static backend and frontend as app just one server
 
